@@ -277,14 +277,16 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
         # 'rest_framework.permissions.AllowAny',
     ),
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.BrowsableAPIRenderer',
+    #     # 'rest_framework.renderers.JSONRenderer',
+    # ),
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
         #'rest_framework.authentication.SessionAuthentication',
@@ -293,6 +295,7 @@ REST_FRAMEWORK = {
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ],    
 }
+
 
 # Email settings
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
@@ -309,10 +312,10 @@ EMAIL_USE_TLS = local_settings.EMAIL_USE_TLS
 
 # ALLAUTH settings
 ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+# ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = False
+ACCOUNT_EMAIL_VERIFICATION = True
 LOGIN_ATTEMPTS_LIMIT = 10
 REAUTHENTICATION_REQUIRED = False
 LOGOUT_ON_PASSWORD_CHANGE = True
